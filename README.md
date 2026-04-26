@@ -30,9 +30,7 @@ Whyfi ensures high-fidelity responses by grounding the LLM in verified external 
 4.  **LLM**: **Gemini-2.5-Flash**(-> 1.5에서 바뀜을 명시)
 5.  **Expansion**: Enhances reliability by integrating the **Naver News API** to provide the latest headlines related to the searched term.-> 정확히는 그냥 코사인 유사도 기반일걸
 
----
-
-## Technical Highlights
+<br><br>
 
 ## Technical Highlights
 
@@ -48,9 +46,7 @@ Whyfi ensures high-fidelity responses by grounding the LLM in verified external 
 * **Hallucination Mitigation**: Constrained LLM responses strictly to **retrieved vector context**, ensuring high-fidelity and grounded financial explanations[cite: 182, 314].
 * **Jargon-to-Analogy Mapping**: Developed prompt templates that translate technical financial terms into **intuitive analogies** and real-world examples for improved accessibility.
 
----
-
-
+<br><br>
 
 
 ## 💻How to Use
