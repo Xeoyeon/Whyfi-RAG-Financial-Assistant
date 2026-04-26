@@ -1,7 +1,8 @@
 # Whyfi: RAG-based Financial Terminology Service
-> Instant financial terminology insights delivered via RAG-powered browsing. -> 이거 더 내 플젝에 맞게
+> Bridging the Financial Literacy Gap: RAG-Driven Insights via Web & Browser Integration.
+<img width="800" height="450" alt="ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/7a70d84a-1d7c-4133-9263-8d38acc9cdc0" />
 
-Whyfi provides simple, real-time explanations for complex financial terms through a Chrome Extension. By integrating RAG directly into the browser, it ensures high-fidelity information accessibility without interrupting the user’s workflow. ->근데 문제점 크롬 익스텐션만 한게 아님. 웹 프로토타입도 함.
+Whyfi simplifies complex financial technicalities using RAG (Retrieval-Augmented Generation). It offers a **dual-access** ecosystem: a Streamlit-based analytical dashboard for comprehensive research and a Chrome Extension for frictionless, real-time explanations during active web browsing.
 <br><br>
 
 *Note: This repository is a personal portfolio mirror of a team project. While the source code remains identical to the original, this **README** has been specifically curated to highlight my individual technical contributions. Original Repository: [[Original Repo Link]](https://github.com/Xeoyeon/whyfi)*
@@ -58,8 +59,9 @@ The system operates through a streamlined retrieval-generation loop:
 
 ## 💻How to Use
 ### Streamlit Dashboard
-* **Live Demo (HuggingFace Spaces)**: Access the interactive app directly on HuggingFace Spaces <br>
-👉 [WhyFi: Financial Assistant](https://huggingface.co/spaces/xeoyeon/whyfi).
+* **Live Demo (HuggingFace Spaces)**: <br>
+Access the interactive app directly 👉 [WhyFi: Financial Assistant](https://huggingface.co/spaces/xeoyeon/whyfi) <br>
+*It may take a few minutes for the initial load due to the server's sleep mode.*
 * **Local Execution**:
     1. Run the application: 
        ```bash
