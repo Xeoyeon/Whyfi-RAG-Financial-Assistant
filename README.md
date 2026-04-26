@@ -1,34 +1,41 @@
 # Whyfi: RAG-based Financial Terminology Service
-> Bridging the financial literacy gap with real-time, context-aware AI.
+> Instant financial terminology insights delivered via RAG-powered browsing. -> 이거 더 내 플젝에 맞게
 
-**Whyfi** is a RAG assistant designed to simplify complex financial terminology and keep users updated with real-time economic trends. By leveraging a **Chrome Extension** as the primary delivery mechanism, the service maximizes information accessibility, providing instantaneous explanations within the user's browsing context.
-
+Whyfi provides simple, real-time explanations for complex financial terms through a Chrome Extension. By integrating RAG directly into the browser, it ensures high-fidelity information accessibility without interrupting the user’s workflow. ->근데 문제점 크롬 익스텐션만 한게 아님. 웹 프로토타입도 함.
 <br><br>
 
-## Tech Stack
+*Note: This repository is a personal portfolio mirror of a team project. While the source code remains identical to the original, this **README** has been specifically curated to highlight my individual technical contributions. Original Repository: [[Original Repo Link]](https://github.com/Xeoyeon/whyfi)*
+<br><br>
 
-### **AI & Data**
-* **LLM**: Gemini 1.5 Flash 
+## Technical Specifications
+
+### AI & Data
+* **LLM**: Gemini 2.5 Flash (Upgraded to 1.5->2.5 for stability on HuggingFace Spaces)
 * **Orchestration**: LangChain 
-* **Embedding**: BGE-M3-ko 
+* **Embedding**: BGE-M3-ko (Multi-lingual & multi-granular support)
 * **Vector DB**: ChromaDB 
 
-### **Interface & Infrastructure**
+### Interface & Deployment
 * **Main Interface**: Chrome Extension (Developer Mode) 
-* **Prototype**: Streamlit
-* **External APIs**: Naver News API, Google Trends API, KDI Economic Keyword Trend(Web crawling)
+* **Web Prototype**: Streamlit
+* **External**: Naver News API, Google Trends API, KDI Economic Keyword Trend(Web crawling)
 
 <br><br>
 
 ## System Architecture
 Whyfi ensures high-fidelity responses by grounding the LLM in verified external knowledge bases, supplemented by real-time news integration.
 
-### Data Flow & Pipeline
-1.  **Ingestion**: Aggregates authoritative financial data, including the Bank of Korea's "700 Financial Terms" and the National Tax Service's "2024 Stock and Tax" guide.
-2.  **Embedding Model**: **BGE-M3-ko** 
-3.  **Storage**: **ChromaDB**
-4.  **LLM**: **Gemini-2.5-Flash**(-> 1.5에서 바뀜을 명시)
-5.  **Expansion**: Enhances reliability by integrating the **Naver News API** to provide the latest headlines related to the searched term.-> 정확히는 그냥 코사인 유사도 기반일걸
+### 1. Knowledge Base (Datasets)
+- Bank of Korea: "700 Financial Terms" (Term definitions and relationships)
+- National Tax Service: "2024 Stock and Tax" (Technical tax and stock guidelines)
+<br>
+
+### 2. Data Pipeline Flow
+The system operates through a streamlined retrieval-generation loop:
+1. **Preprocessing**: Raw PDFs are converted to Markdown using PyMuPDF and cleaned via custom regex scripts.
+2. **Retrieval**: User queries are vectorized and compared against the Knowledge Base using Cosine Similarity to retrieve the most relevant context.
+3. **Augmentation**: The Naver News API fetches the latest headlines to supplement the static knowledge with real-time events.
+4. **Generation**: Gemini 2.5 Flash synthesizes the retrieved context and news into a jargon-free, intuitive explanation.
 
 <br><br>
 
@@ -39,19 +46,20 @@ Whyfi ensures high-fidelity responses by grounding the LLM in verified external 
 * **Automated Data Cleaning**: Engineered custom **regex-based scripts** to remove redundant symbols and whitespace, significantly enhancing data quality for embedding.
 
 ### **2. Semantic Retrieval Strategy**
-* **Context-Aware Embedding**: Utilized the **BGE-M3-ko** model to capture subtle financial nuances across diverse document formats[cite: 278].
 * **Multi-Source Retrieval**: Implemented a **parallel retrieval chain** with optimized weights (k=3 for dictionary terms, k=2 for book context) to provide comprehensive, multi-layered information.
 
-### **3. Reliable AI Generation**
-* **Hallucination Mitigation**: Constrained LLM responses strictly to **retrieved vector context**, ensuring high-fidelity and grounded financial explanations[cite: 182, 314].
+### **3. Reliable Response Generation**
+* **Verifiability & Benchmarking** : Integrated **search trends and news APIs with source citations**, ensuring high-fidelity outputs validated through **RAGAS**-based benchmarking.
 * **Jargon-to-Analogy Mapping**: Developed prompt templates that translate technical financial terms into **intuitive analogies** and real-world examples for improved accessibility.
+
 
 <br><br>
 
 
 ## 💻How to Use
 ### Streamlit Dashboard
-* **Live Demo (HuggingFace Spaces)**: Access the interactive app directly on HuggingFace Spaces 👉 [WhyFi: Financial Assistant](https://huggingface.co/spaces/xeoyeon/whyfi).
+* **Live Demo (HuggingFace Spaces)**: Access the interactive app directly on HuggingFace Spaces <br>
+👉 [WhyFi: Financial Assistant](https://huggingface.co/spaces/xeoyeon/whyfi).
 * **Local Execution**:
     1. Run the application: 
        ```bash
